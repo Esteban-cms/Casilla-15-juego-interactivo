@@ -1,432 +1,504 @@
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Misión Comunidad Educativa</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Misión Comunidad Educativa Pro</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+:root{
+  --bg1:#160f3d;
+  --bg2:#2f1b71;
+  --bg3:#006d77;
+  --gold:#ffd166;
+  --orange:#ff9f1c;
+  --green:#06d6a0;
+  --cyan:#4cc9f0;
+  --pink:#ff4d8d;
+  --white:#ffffff;
+  --dark:#15162c;
+  --card:rgba(255,255,255,.16);
+  --stroke:rgba(255,255,255,.35);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at top,#ffd166 0 6%,transparent 7%),
-    linear-gradient(#25115f 0%,#4b2c8f 35%,#0f766e 100%);
   color:white;
   overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(255,209,102,.9) 0 70px,transparent 72px),
+    radial-gradient(circle at 80% 18%,rgba(76,201,240,.22) 0 160px,transparent 165px),
+    linear-gradient(140deg,var(--bg1),var(--bg2) 50%,var(--bg3));
 }
 
 body::before{
   content:"";
   position:fixed;
   inset:0;
+  pointer-events:none;
   background:
-    radial-gradient(circle at 10% 20%,rgba(255,255,255,.8) 0 2px,transparent 3px),
-    radial-gradient(circle at 30% 15%,rgba(255,255,255,.7) 0 2px,transparent 3px),
-    radial-gradient(circle at 70% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px),
-    radial-gradient(circle at 85% 28%,rgba(255,255,255,.7) 0 2px,transparent 3px);
-  z-index:-3;
+    radial-gradient(circle at 12% 23%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+    radial-gradient(circle at 28% 16%,rgba(255,255,255,.7) 0 2px,transparent 3px),
+    radial-gradient(circle at 62% 13%,rgba(255,255,255,.75) 0 2px,transparent 3px),
+    radial-gradient(circle at 86% 31%,rgba(255,255,255,.7) 0 2px,transparent 3px),
+    linear-gradient(transparent 0 78%,rgba(0,0,0,.20));
+  z-index:-4;
 }
 
-.city{
+.skyline{
   position:fixed;
-  bottom:0;
+  bottom:72px;
   width:100%;
-  height:170px;
-  background:linear-gradient(to top,#14213d,#1b263b);
-  clip-path:polygon(0 45%,8% 45%,8% 25%,16% 25%,16% 55%,25% 55%,25% 20%,36% 20%,36% 50%,47% 50%,47% 30%,58% 30%,58% 55%,70% 55%,70% 15%,82% 15%,82% 45%,100% 45%,100% 100%,0 100%);
-  z-index:-2;
+  height:190px;
+  background:linear-gradient(to top,#10182f,#1a2450);
+  clip-path:polygon(0 55%,6% 55%,6% 35%,12% 35%,12% 65%,21% 65%,21% 25%,31% 25%,31% 58%,42% 58%,42% 39%,53% 39%,53% 64%,64% 64%,64% 22%,76% 22%,76% 55%,88% 55%,88% 32%,100% 32%,100% 100%,0 100%);
+  z-index:-3;
 }
 
 .road{
   position:fixed;
   bottom:0;
   width:100%;
-  height:70px;
-  background:#2b2d42;
-  z-index:-1;
+  height:82px;
+  background:linear-gradient(#232641,#131525);
+  z-index:-2;
 }
 
 .road::after{
   content:"";
   position:absolute;
-  top:32px;
+  top:38px;
   left:0;
   width:200%;
   height:5px;
-  background:repeating-linear-gradient(90deg,#fff 0 40px,transparent 40px 80px);
+  background:repeating-linear-gradient(90deg,#fff 0 48px,transparent 48px 92px);
   animation:road 5s linear infinite;
+  opacity:.9;
 }
-
-@keyframes road{to{transform:translateX(-80px)}}
+@keyframes road{to{transform:translateX(-92px)}}
 
 .container{
-  max-width:1180px;
+  width:min(1200px,94%);
   margin:auto;
-  padding:25px;
+  padding:28px 0 110px;
   text-align:center;
 }
 
-.screen{display:none;animation:fade .7s ease}
+.screen{display:none;animation:fade .55s ease}
 .active{display:block}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:translateY(0)}
-}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
 h1{
-  font-size:3rem;
-  text-shadow:4px 4px #000;
+  font-size:clamp(2.2rem,6vw,4.2rem);
+  text-shadow:0 7px 0 rgba(0,0,0,.28),0 18px 35px rgba(0,0,0,.35);
+  letter-spacing:.5px;
 }
 
-h2{
-  font-size:2rem;
-  margin:15px;
-}
+h2{font-size:clamp(1.6rem,4vw,2.5rem);margin:12px 0 18px}
+h3{font-size:1.1rem}
 
 .card{
-  background:rgba(255,255,255,.18);
-  backdrop-filter:blur(14px);
-  border:2px solid rgba(255,255,255,.35);
-  border-radius:35px;
-  padding:28px;
+  background:var(--card);
+  border:1.5px solid var(--stroke);
+  backdrop-filter:blur(16px);
+  border-radius:34px;
+  padding:26px;
   margin:20px auto;
-  box-shadow:0 18px 40px rgba(0,0,0,.35);
+  box-shadow:0 20px 55px rgba(0,0,0,.34);
 }
 
 .bubble{
-  background:white;
-  color:#231942;
-  border:4px solid #ffd166;
-  border-radius:25px;
-  max-width:800px;
-  margin:15px auto;
-  padding:18px;
-  font-weight:bold;
+  max-width:880px;
+  margin:14px auto 18px;
+  padding:17px 20px;
+  border-radius:24px;
+  background:#fff;
+  color:#211347;
+  border:4px solid var(--gold);
+  font-weight:750;
+  line-height:1.35;
 }
 
 button{
-  border:none;
-  padding:15px 25px;
-  margin:10px;
-  border-radius:30px;
-  font-weight:bold;
+  border:0;
+  padding:14px 22px;
+  margin:8px;
+  border-radius:999px;
+  color:#261800;
+  background:linear-gradient(135deg,var(--gold),var(--orange));
+  box-shadow:0 10px 22px rgba(0,0,0,.30);
+  font-weight:800;
   cursor:pointer;
-  background:linear-gradient(135deg,#ffd60a,#ff8500);
-  color:#2b1700;
-  box-shadow:0 8px 18px rgba(0,0,0,.35);
-  transition:.25s;
+  transition:.2s ease;
 }
+button:hover{transform:translateY(-2px) scale(1.04)}
+button.secondary{background:linear-gradient(135deg,#fff,#dfe7ff);color:#20133f}
 
-button:hover{transform:scale(1.07)}
-
-.progress{
-  width:90%;
-  max-width:700px;
-  height:18px;
-  margin:18px auto;
-  background:rgba(255,255,255,.3);
-  border:2px solid white;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#ffd60a,#06d6a0);
-  transition:.6s;
-}
-
-/* Muñeca */
-.doll{
-  width:145px;
-  height:205px;
-  margin:0 auto 10px;
-  position:relative;
-  animation:float 3s infinite ease-in-out;
-}
-
-@keyframes float{
-  50%{transform:translateY(-10px)}
-}
-
-.hair{position:absolute;top:5px;left:28px;width:90px;height:98px;background:#3b1d0f;border-radius:50%}
-.face{position:absolute;top:25px;left:38px;width:70px;height:70px;background:#ffd6b3;border-radius:50%;border:3px solid white}
-.eye{position:absolute;top:50px;width:9px;height:9px;background:#222;border-radius:50%}
-.eye.left{left:55px}.eye.right{left:83px}
-.mouth{position:absolute;top:74px;left:68px;width:14px;height:8px;border-bottom:3px solid #b5174b;border-radius:50%}
-.bow{position:absolute;top:0;left:58px;font-size:28px;z-index:3}
-.body{position:absolute;top:102px;left:42px;width:62px;height:72px;background:linear-gradient(#ff70a6,#ff006e);border-radius:28px 28px 18px 18px;border:3px solid white}
-.arm{position:absolute;top:115px;width:20px;height:54px;background:#ffd6b3;border-radius:20px}
-.arm.left{left:22px;transform:rotate(28deg)}.arm.right{right:22px;transform:rotate(-28deg)}
-.leg{position:absolute;top:172px;width:18px;height:35px;background:#633fdd;border-radius:16px}
-.leg.left{left:52px}.leg.right{right:52px}
-
-/* Tablero */
-.board{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:18px;
-  margin-top:20px;
-}
-
-.tile{
-  background:white;
-  color:#231942;
-  border-radius:25px;
-  padding:22px;
-  min-height:170px;
-  cursor:pointer;
-  box-shadow:0 12px 25px rgba(0,0,0,.3);
-  transition:.3s;
-  border:5px solid transparent;
-}
-
-.tile:hover{
-  transform:scale(1.05);
-  border-color:#ffd166;
-}
-
-.tile.locked{
-  opacity:.45;
-  filter:grayscale(1);
-  pointer-events:none;
-}
-
-.tile.done{
-  background:#06d6a0;
-}
-
-.icon{font-size:4rem}
-
-/* Arrastrar */
-.drag-area{
+.badgebar{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:14px;
-  margin:20px 0;
+  gap:10px;
+  margin:15px 0;
 }
 
-.drag-item{
-  background:white;
-  color:#231942;
-  padding:14px 18px;
-  border-radius:20px;
-  cursor:grab;
-  font-weight:bold;
-  box-shadow:0 8px 18px rgba(0,0,0,.28);
+.badge{
+  padding:9px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.32);
+  font-weight:700;
 }
+
+.badge.on{
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  color:#102233;
+}
+
+.progress{
+  width:min(760px,94%);
+  height:20px;
+  margin:16px auto;
+  border-radius:999px;
+  border:2px solid #fff;
+  overflow:hidden;
+  background:rgba(255,255,255,.25);
+}
+.bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--green),var(--gold),var(--pink));
+  transition:.6s ease;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:22px;
+  align-items:center;
+  text-align:left;
+}
+.hero-text{text-align:center}
+@media(max-width:740px){.hero{grid-template-columns:1fr;text-align:center}.hero-text{text-align:center}}
+
+.doll{
+  width:150px;
+  height:215px;
+  margin:auto;
+  position:relative;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+.hair{position:absolute;top:7px;left:28px;width:94px;height:105px;background:#3b1d0f;border-radius:50%}
+.face{position:absolute;top:30px;left:39px;width:72px;height:72px;background:#ffd6b3;border-radius:50%;border:3px solid white}
+.eye{position:absolute;top:57px;width:9px;height:9px;background:#222;border-radius:50%}
+.eye.left{left:57px}.eye.right{left:86px}
+.mouth{position:absolute;top:80px;left:70px;width:15px;height:8px;border-bottom:3px solid #b5174b;border-radius:50%}
+.bow{position:absolute;top:1px;left:60px;font-size:29px;z-index:3}
+.body{position:absolute;top:108px;left:42px;width:66px;height:76px;background:linear-gradient(#ff70a6,#ff006e);border-radius:30px 30px 18px 18px;border:3px solid white}
+.arm{position:absolute;top:122px;width:20px;height:58px;background:#ffd6b3;border-radius:20px}
+.arm.left{left:19px;transform:rotate(28deg)}.arm.right{right:19px;transform:rotate(-28deg)}
+.leg{position:absolute;top:182px;width:18px;height:35px;background:#633fdd;border-radius:16px}
+.leg.left{left:53px}.leg.right{right:53px}
+
+.board{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.tile{
+  background:#fff;
+  color:#20133f;
+  min-height:158px;
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 15px 28px rgba(0,0,0,.30);
+  cursor:pointer;
+  border:5px solid transparent;
+  transition:.25s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+}
+.tile:hover{transform:translateY(-4px);border-color:var(--gold)}
+.tile.locked{opacity:.42;filter:grayscale(1);pointer-events:none}
+.tile.done{background:linear-gradient(135deg,#caffbf,var(--green));border-color:#fff}
+.icon{font-size:3.6rem}
+
+.drag-area{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin:18px 0;
+}
+.drag-item,.chip{
+  background:#fff;
+  color:#20133f;
+  padding:13px 17px;
+  border-radius:18px;
+  cursor:grab;
+  font-weight:800;
+  box-shadow:0 9px 18px rgba(0,0,0,.25);
+  user-select:none;
+}
+.chip{cursor:pointer}
+.chip.selected,.drag-item.selected{background:var(--green)}
 
 .drop-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
-  margin-top:20px;
+  gap:15px;
 }
-
 .zone{
-  min-height:160px;
-  border:4px dashed white;
-  border-radius:28px;
-  padding:18px;
-  background:rgba(255,255,255,.14);
+  min-height:150px;
+  border:4px dashed rgba(255,255,255,.9);
+  border-radius:24px;
+  padding:16px;
+  background:rgba(255,255,255,.13);
 }
+.zone.ok{background:rgba(6,214,160,.44);border-style:solid}
 
-.zone.ok{
-  background:rgba(6,214,160,.45);
-}
-
-/* Memoria */
 .memory{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-  margin-top:20px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+  margin-top:18px;
 }
-
 .mem-card{
-  min-height:125px;
+  min-height:118px;
   background:#fff;
-  color:#231942;
+  color:#20133f;
   border-radius:22px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:12px;
-  font-weight:bold;
+  padding:10px;
+  font-weight:850;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(0,0,0,.28);
-  transition:.3s;
+  box-shadow:0 10px 20px rgba(0,0,0,.26);
 }
+.mem-card.hidden{background:#7b2cbf;color:white;font-size:2rem}
+.mem-card.matched{background:var(--green);pointer-events:none}
 
-.mem-card.hidden{
-  background:#7b2cbf;
-  color:white;
-  font-size:2rem;
-}
-
-.mem-card.matched{
-  background:#06d6a0;
-  pointer-events:none;
-}
-
-/* Mesa de acuerdos */
-.timeline{
-  display:grid;
-  gap:15px;
-  margin-top:20px;
-}
-
+.timeline{display:grid;gap:15px;margin-top:18px}
 .step{
-  background:white;
-  color:#231942;
+  text-align:left;
+  background:#fff;
+  color:#20133f;
   padding:18px;
   border-radius:24px;
-  box-shadow:0 10px 22px rgba(0,0,0,.25);
+  box-shadow:0 10px 22px rgba(0,0,0,.24);
 }
-
+.actions{margin-top:10px}
 .actions span{
   display:inline-block;
-  background:#ffd166;
-  color:#231942;
-  padding:10px 15px;
-  margin:8px;
-  border-radius:18px;
+  padding:10px 13px;
+  margin:7px 5px;
+  background:#ffe08a;
+  border-radius:16px;
   cursor:pointer;
-  font-weight:bold;
+  font-weight:800;
+}
+.actions span.selected{background:var(--green)}
+.energyBox{
+  display:inline-flex;
+  gap:12px;
+  align-items:center;
+  padding:12px 18px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:20px;
+  font-weight:850;
 }
 
-.actions span.selected{
-  background:#06d6a0;
+.recipe{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.pot{
+  min-height:230px;
+  border-radius:40px 40px 60px 60px;
+  background:linear-gradient(#2b2d42,#111827);
+  border:8px solid rgba(255,255,255,.45);
+  padding:20px;
+  box-shadow:inset 0 0 35px rgba(0,0,0,.6),0 14px 30px rgba(0,0,0,.28);
+}
+.orderList{
+  min-height:170px;
+  display:flex;
+  flex-wrap:wrap;
+  align-content:flex-start;
+  justify-content:center;
+  gap:10px;
 }
 
-/* Comunidad */
 .community{
   min-height:420px;
   position:relative;
-  background:linear-gradient(#9bf6ff,#caffbf);
-  border-radius:35px;
+  border-radius:34px;
   overflow:hidden;
   margin-top:20px;
-  color:#231942;
+  color:#20133f;
+  background:
+    radial-gradient(circle at 50% 22%,#fff 0 38px,transparent 40px),
+    linear-gradient(#9bf6ff 0 50%,#caffbf 50% 100%);
 }
-
 .place{
   position:absolute;
-  background:white;
-  padding:14px;
+  background:#fff;
+  padding:13px;
   border-radius:20px;
-  font-weight:bold;
-  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  font-weight:800;
+  box-shadow:0 9px 18px rgba(0,0,0,.24);
   cursor:pointer;
   min-width:190px;
 }
-
 #pl1{left:8%;top:70px}
-#pl2{right:8%;top:80px}
-#pl3{left:34%;bottom:55px}
-#pl4{left:39%;top:135px}
+#pl2{right:8%;top:78px}
+#pl3{left:32%;bottom:52px}
+#pl4{left:39%;top:148px}
+.place.fixed{background:var(--green)}
 
-.place.fixed{
-  background:#06d6a0;
+.doorWrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  align-items:center;
+}
+.door{
+  width:min(330px,90%);
+  height:390px;
+  margin:auto;
+  background:linear-gradient(90deg,#6b3e1f,#a35d2d);
+  border:12px solid #3b230f;
+  border-radius:20px 20px 8px 8px;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.door::before{
+  content:"";
+  position:absolute;
+  top:28px;left:34px;right:34px;bottom:38px;
+  border:5px solid rgba(255,255,255,.18);
+  border-radius:14px;
+}
+.knob{
+  position:absolute;
+  right:42px;
+  top:190px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 6px rgba(0,0,0,.18);
+}
+.keypad{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  padding:22px;
+  border-radius:28px;
+}
+input{
+  width:min(520px,95%);
+  padding:15px;
+  border-radius:18px;
+  border:3px solid var(--gold);
+  text-align:center;
+  font-size:1.05rem;
+  margin:10px;
+  font-weight:800;
 }
 
-/* Placa */
 .plaque{
-  width:90%;
-  max-width:650px;
+  width:min(690px,95%);
   margin:20px auto;
   background:linear-gradient(135deg,#d4af37,#f9d976);
   color:#4a2c00;
-  padding:25px;
+  padding:24px;
   border:10px ridge #8b5a2b;
   border-radius:22px;
-  font-size:1.2rem;
-  font-weight:bold;
-  box-shadow:0 15px 35px rgba(0,0,0,.4);
+  font-size:1.15rem;
+  font-weight:850;
+  box-shadow:0 15px 35px rgba(0,0,0,.38);
 }
-
-input{
-  width:90%;
-  max-width:600px;
-  padding:15px;
-  border-radius:20px;
-  border:3px solid #ffd166;
-  text-align:center;
-  font-size:1rem;
-  margin:10px;
-}
-
 .message{
-  margin-top:15px;
-  font-weight:bold;
-  font-size:1.1rem;
+  margin-top:14px;
+  min-height:28px;
+  font-weight:850;
+  font-size:1.05rem;
 }
-
 .footer{
-  margin-top:35px;
-  display:inline-block;
-  padding:16px 25px;
-  background:rgba(255,255,255,.18);
-  border-radius:25px;
-  backdrop-filter:blur(10px);
-  font-weight:bold;
+  position:fixed;
+  right:16px;
+  bottom:12px;
+  padding:12px 17px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:20px;
+  backdrop-filter:blur(12px);
+  font-size:.9rem;
+  z-index:5;
 }
-
-@media(max-width:700px){
-  h1{font-size:2.1rem}
+@media(max-width:790px){
+  .doorWrap{grid-template-columns:1fr}
   .place{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:12px}
   .community{padding:20px}
 }
 </style>
 </head>
-
 <body>
-
-<div class="city"></div>
+<div class="skyline"></div>
 <div class="road"></div>
 
 <div class="container">
 
 <section id="inicio" class="screen active">
-  <div class="doll">
-    <div class="hair"></div><div class="bow">🎀</div><div class="face"></div>
-    <div class="eye left"></div><div class="eye right"></div><div class="mouth"></div>
-    <div class="arm left"></div><div class="arm right"></div><div class="body"></div>
-    <div class="leg left"></div><div class="leg right"></div>
-  </div>
-
-  <h1>🌆 Misión Comunidad Viva</h1>
-
-  <div class="card">
-    <div class="bubble">
-      Soy Eley Pertuz Gil. Hoy no vas a contestar preguntas: vas a activar una comunidad educativa completa.
+  <div class="hero card">
+    <div class="doll">
+      <div class="hair"></div><div class="bow">🎀</div><div class="face"></div>
+      <div class="eye left"></div><div class="eye right"></div><div class="mouth"></div>
+      <div class="arm left"></div><div class="arm right"></div><div class="body"></div>
+      <div class="leg left"></div><div class="leg right"></div>
     </div>
-    <p>Une actores, conecta ideas, toma decisiones, transforma espacios y deja una placa para la comunidad.</p>
-    <button onclick="start()">🚀 Iniciar misión</button>
+    <div class="hero-text">
+      <h1>🌆 Misión Comunidad Viva</h1>
+      <div class="bubble">
+        Juego interactivo sobre la alianza entre familia, escuela y comunidad.
+      </div>
+      <p>Supera seis misiones, reúne pistas y abre la puerta final de la comunidad educativa.</p>
+      <button onclick="start()">🚀 Iniciar misión</button>
+    </div>
   </div>
 </section>
 
 <section id="hub" class="screen">
   <h2>🧭 Centro de misiones</h2>
   <div class="progress"><div id="bar" class="bar"></div></div>
-
+  <div class="badgebar" id="clues">
+    <span class="badge" id="clue1">Pista 1: _</span>
+    <span class="badge" id="clue2">Pista 2: _</span>
+    <span class="badge" id="clue3">Pista 3: _</span>
+    <span class="badge" id="clue4">Pista 4: _</span>
+    <span class="badge" id="clue5">Pista 5: _</span>
+  </div>
   <div class="bubble" id="hubText">
-    Completa las misiones en orden. Cada una activa una parte de la comunidad.
+    Completa las misiones en orden. Cada misión activa una pista para abrir la puerta final.
   </div>
 
   <div class="board">
     <div id="t1" class="tile" onclick="show('m1')"><div class="icon">🧩</div><h3>Red de actores</h3></div>
     <div id="t2" class="tile locked" onclick="show('m2')"><div class="icon">🧠</div><h3>Memoria comunitaria</h3></div>
-    <div id="t3" class="tile locked" onclick="show('m3')"><div class="icon">🛠️</div><h3>Mesa de Acuerdos</h3></div>
-    <div id="t4" class="tile locked" onclick="show('m4')"><div class="icon">🏘️</div><h3>Laboratorio del Barrio</h3></div>
-    <div id="t5" class="tile locked" onclick="show('m5')"><div class="icon">🏅</div><h3>Placa final</h3></div>
+    <div id="t3" class="tile locked" onclick="show('m3')"><div class="icon">🛠️</div><h3>Mesa de acuerdos</h3></div>
+    <div id="t4" class="tile locked" onclick="show('m4')"><div class="icon">🥘</div><h3>Sancocho de alianzas</h3></div>
+    <div id="t5" class="tile locked" onclick="show('m5')"><div class="icon">🏘️</div><h3>Laboratorio del barrio</h3></div>
+    <div id="t6" class="tile locked" onclick="show('m6')"><div class="icon">🚪</div><h3>Puerta final</h3></div>
   </div>
 </section>
 
@@ -434,22 +506,20 @@ input{
   <h2>🧩 Misión 1: Conecta los actores</h2>
   <div class="card">
     <div class="bubble">Arrastra cada actor al espacio donde más aporta.</div>
-
     <div class="drag-area">
       <div class="drag-item" draggable="true" data-target="z1">👨‍👩‍👧 Familia</div>
       <div class="drag-item" draggable="true" data-target="z2">🏫 Escuela</div>
       <div class="drag-item" draggable="true" data-target="z3">🏘️ Comunidad</div>
       <div class="drag-item" draggable="true" data-target="z4">🧑‍🎓 Estudiantes</div>
     </div>
-
     <div class="drop-grid">
       <div class="zone" id="z1">❤️ Cuidado y acompañamiento</div>
       <div class="zone" id="z2">📚 Aprendizaje y convivencia</div>
       <div class="zone" id="z3">🤝 Apoyo y transformación social</div>
       <div class="zone" id="z4">🌟 Participación y sueños</div>
     </div>
-
     <button onclick="finishM1()">Activar red</button>
+    <button class="secondary" onclick="show('hub')">Volver</button>
     <div id="msg1" class="message"></div>
   </div>
 </section>
@@ -459,19 +529,18 @@ input{
   <div class="card">
     <div class="bubble">Encuentra las parejas de ideas que se complementan.</div>
     <div class="memory" id="memory"></div>
+    <button class="secondary" onclick="show('hub')">Volver</button>
     <div id="msg2" class="message"></div>
   </div>
 </section>
 
 <section id="m3" class="screen">
-  <h2>🛠️ Misión 3: Mesa de Acuerdos</h2>
+  <h2>🛠️ Misión 3: Mesa de acuerdos</h2>
   <div class="card">
     <div class="bubble">
-      Tienes 6 fichas de energía comunitaria. Arma un plan equilibrado seleccionando acciones para cada situación.
-      No puedes gastar de más.
+      Prueba corregida: ahora sí tiene solución. Cuentas con 10 energías y debes escoger las acciones positivas.
     </div>
-
-    <h3>Energía disponible: <span id="energia">6</span> ⚡</h3>
+    <div class="energyBox">Energía disponible: <span id="energia">10</span> ⚡</div>
 
     <div class="timeline">
       <div class="step">
@@ -503,28 +572,56 @@ input{
     </div>
 
     <button onclick="finishM3()">✅ Validar plan</button>
-    <button onclick="resetPlan()">🔄 Reiniciar plan</button>
-
+    <button onclick="resetPlan()" class="secondary">🔄 Reiniciar</button>
+    <button class="secondary" onclick="show('hub')">Volver</button>
     <div id="msg3" class="message"></div>
   </div>
 </section>
 
 <section id="m4" class="screen">
-  <h2>🏘️ Misión 4: Laboratorio de Transformación del Barrio</h2>
+  <h2>🥘 Misión 4: Sancocho de alianzas</h2>
   <div class="card">
     <div class="bubble">
-      Selecciona una herramienta y aplícala al lugar correcto. Cada espacio necesita dos herramientas adecuadas para transformarse.
+      Nueva prueba interactiva: agrega los ingredientes en orden para cocinar una alianza fuerte entre familia, escuela y comunidad.
+    </div>
+
+    <div class="pot">
+      <h3>🍲 Olla comunitaria</h3>
+      <div id="recipeOrder" class="orderList"></div>
+    </div>
+
+    <div class="recipe">
+      <div class="chip" onclick="addIngredient(this,'Escucha')">👂 Escucha</div>
+      <div class="chip" onclick="addIngredient(this,'Confianza')">🤝 Confianza</div>
+      <div class="chip" onclick="addIngredient(this,'Participación')">🙋 Participación</div>
+      <div class="chip" onclick="addIngredient(this,'Acuerdos')">📝 Acuerdos</div>
+      <div class="chip" onclick="addIngredient(this,'Seguimiento')">📌 Seguimiento</div>
+    </div>
+
+    <p><strong>Orden esperado:</strong> escuchar, confiar, participar, acordar y hacer seguimiento.</p>
+    <button onclick="finishM4()">🥘 Probar sancocho</button>
+    <button onclick="resetRecipe()" class="secondary">🔄 Reiniciar</button>
+    <button class="secondary" onclick="show('hub')">Volver</button>
+    <div id="msg4" class="message"></div>
+  </div>
+</section>
+
+<section id="m5" class="screen">
+  <h2>🏘️ Misión 5: Laboratorio de transformación del barrio</h2>
+  <div class="card">
+    <div class="bubble">
+      Selecciona una herramienta y aplícala al lugar correcto. Cada espacio necesita dos herramientas adecuadas.
     </div>
 
     <h3>Herramienta seleccionada: <span id="toolSelected">Ninguna</span></h3>
 
     <div class="drag-area">
-      <div class="drag-item" onclick="selectTool('dialogo')">💬 Diálogo</div>
-      <div class="drag-item" onclick="selectTool('familia')">👨‍👩‍👧 Familia</div>
-      <div class="drag-item" onclick="selectTool('escuela')">🏫 Escuela abierta</div>
-      <div class="drag-item" onclick="selectTool('comunidad')">🤝 Comunidad</div>
-      <div class="drag-item" onclick="selectTool('cultura')">🎭 Cultura</div>
-      <div class="drag-item" onclick="selectTool('ambiente')">🌳 Cuidado ambiental</div>
+      <div class="chip" onclick="selectTool('dialogo')">💬 Diálogo</div>
+      <div class="chip" onclick="selectTool('familia')">👨‍👩‍👧 Familia</div>
+      <div class="chip" onclick="selectTool('escuela')">🏫 Escuela abierta</div>
+      <div class="chip" onclick="selectTool('comunidad')">🤝 Comunidad</div>
+      <div class="chip" onclick="selectTool('cultura')">🎭 Cultura</div>
+      <div class="chip" onclick="selectTool('ambiente')">🌳 Cuidado ambiental</div>
     </div>
 
     <div class="community">
@@ -534,26 +631,40 @@ input{
       <div id="pl4" class="place" onclick="applyTool('pl4')">🏫 Escuela aislada<br><small>Necesita 2 apoyos</small></div>
     </div>
 
-    <button onclick="finishM4()">🌟 Finalizar transformación</button>
-    <div id="msg4" class="message"></div>
+    <button onclick="finishM5()">🌟 Finalizar transformación</button>
+    <button class="secondary" onclick="show('hub')">Volver</button>
+    <div id="msg5" class="message"></div>
   </div>
 </section>
 
-<section id="m5" class="screen">
-  <h2>🏅 Misión 5: Crea la placa comunitaria</h2>
-  <div class="card">
-    <div class="bubble">Escribe una frase corta para agradecer el aporte de la escuela a la comunidad.</div>
-
-    <input id="placaTexto" placeholder="Ejemplo: Gracias por unirnos y transformar nuestra comunidad">
-
-    <button onclick="crearPlaca()">Crear placa</button>
-
-    <div class="plaque" id="placa">
-      Aquí aparecerá tu placa comunitaria
+<section id="m6" class="screen">
+  <h2>🚪 Misión 6: Abre la puerta final</h2>
+  <div class="card doorWrap">
+    <div class="door"><div class="knob"></div></div>
+    <div class="keypad">
+      <div class="bubble">
+        Código fácil de predecir: junta las pistas obtenidas. La palabra clave es el valor central del juego.
+      </div>
+      <div class="badgebar">
+        <span class="badge on">U</span><span class="badge on">N</span><span class="badge on">I</span><span class="badge on">O</span><span class="badge on">N</span>
+      </div>
+      <input id="doorCode" placeholder="Escribe el código: UNION" />
+      <button onclick="openDoor()">🔓 Abrir puerta</button>
+      <button class="secondary" onclick="show('hub')">Volver</button>
+      <div id="msg6" class="message"></div>
     </div>
+  </div>
+</section>
 
+<section id="placa" class="screen">
+  <h2>🏅 Placa comunitaria</h2>
+  <div class="card">
+    <div class="bubble">Escribe una frase corta para agradecer la unión entre familia, escuela y comunidad.</div>
+    <input id="placaTexto" placeholder="Ejemplo: Gracias por unirnos y transformar nuestra comunidad" />
+    <button onclick="crearPlaca()">Crear placa</button>
+    <div class="plaque" id="placaFinal">Aquí aparecerá tu placa comunitaria</div>
     <button onclick="final()">Cerrar misión</button>
-    <div id="msg5" class="message"></div>
+    <div id="msgPlaca" class="message"></div>
   </div>
 </section>
 
@@ -568,10 +679,10 @@ input{
   </div>
 </section>
 
-<div class="footer">
-  Juego educativo creado por<br><strong>Eley Pertuz Gil</strong>
 </div>
 
+<div class="footer">
+  Juego educativo creado por<br><strong>Eley Pertuz Gil</strong>
 </div>
 
 <script>
@@ -580,6 +691,7 @@ let placed=0;
 let matched=0;
 let first=null;
 let plaqueReady=false;
+let completed = {1:false,2:false,3:false,4:false,5:false,6:false};
 
 function show(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -591,31 +703,37 @@ function start(){
   show('hub');
 }
 
-function updateProgress(){
-  progress += 20;
-  document.getElementById('bar').style.width = progress + "%";
+function completeMission(n, clue){
+  if(completed[n]) return;
+  completed[n]=true;
+  done(n);
+  if(n<6) unlock(n+1);
+  progress += 100/6;
+  document.getElementById('bar').style.width = Math.min(progress,100) + "%";
+  const clueEl = document.getElementById('clue'+n);
+  if(clueEl && clue){
+    clueEl.textContent = "Pista " + n + ": " + clue;
+    clueEl.classList.add('on');
+  }
 }
 
-function unlock(n){
-  document.getElementById('t'+n).classList.remove('locked');
-}
-
-function done(n){
-  document.getElementById('t'+n).classList.add('done');
-}
+function unlock(n){document.getElementById('t'+n).classList.remove('locked')}
+function done(n){document.getElementById('t'+n).classList.add('done')}
 
 function sound(type){
-  const ctx=new (window.AudioContext||window.webkitAudioContext)();
-  const o=ctx.createOscillator();
-  const g=ctx.createGain();
-  o.connect(g);g.connect(ctx.destination);
-  o.frequency.value=type==='ok'?820:type==='bad'?160:480;
-  g.gain.value=.07;
-  o.start();
-  setTimeout(()=>o.stop(),180);
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator();
+    const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.value=type==='ok'?820:type==='bad'?160:480;
+    g.gain.value=.065;
+    o.start();
+    setTimeout(()=>{o.stop();ctx.close();},180);
+  }catch(e){}
 }
 
-/* misión 1 */
+/* MISIÓN 1 */
 document.querySelectorAll('.drag-item[draggable="true"]').forEach(item=>{
   item.addEventListener('dragstart',e=>{
     e.dataTransfer.setData('target',item.dataset.target);
@@ -643,29 +761,26 @@ document.querySelectorAll('.zone').forEach(zone=>{
 
 function finishM1(){
   if(placed===4){
-    document.getElementById('msg1').innerHTML="✅ Red comunitaria activada.";
-    done(1); unlock(2); updateProgress();
-    setTimeout(()=>show('hub'),800);
+    document.getElementById('msg1').innerHTML="✅ Red comunitaria activada. Pista obtenida: U.";
+    completeMission(1,'U');
+    sound('ok');
+    setTimeout(()=>show('hub'),900);
   }else{
+    sound('bad');
     document.getElementById('msg1').innerHTML="❌ Faltan actores por ubicar.";
   }
 }
 
-/* misión 2 */
+/* MISIÓN 2 */
 const pairs=[
   ['Familia','Cuidado'],
   ['Escuela','Aprendizaje'],
   ['Comunidad','Transformación'],
   ['Participación','Bienestar']
 ];
-
 let cards=[];
-pairs.forEach((p,i)=>{
-  cards.push({text:p[0],pair:i});
-  cards.push({text:p[1],pair:i});
-});
+pairs.forEach((p,i)=>{cards.push({text:p[0],pair:i});cards.push({text:p[1],pair:i});});
 cards.sort(()=>Math.random()-.5);
-
 const memory=document.getElementById('memory');
 cards.forEach(c=>{
   const div=document.createElement('div');
@@ -679,24 +794,21 @@ cards.forEach(c=>{
 
 function flip(card){
   if(card.classList.contains('matched') || card===first)return;
-
   card.classList.remove('hidden');
   card.textContent=card.dataset.text;
 
-  if(!first){
-    first=card;
-  }else{
+  if(!first){first=card;}
+  else{
     if(first.dataset.pair===card.dataset.pair){
       first.classList.add('matched');
       card.classList.add('matched');
       matched++;
       sound('ok');
       first=null;
-
       if(matched===4){
-        document.getElementById('msg2').innerHTML="✅ Memoria comunitaria completada.";
-        done(2); unlock(3); updateProgress();
-        setTimeout(()=>show('hub'),1000);
+        document.getElementById('msg2').innerHTML="✅ Memoria comunitaria completada. Pista obtenida: N.";
+        completeMission(2,'N');
+        setTimeout(()=>show('hub'),1100);
       }
     }else{
       sound('bad');
@@ -710,23 +822,17 @@ function flip(card){
   }
 }
 
-/* misión 3 - Mesa de acuerdos */
-let energia = 6;
-let planSeleccionado = {
-  1: [],
-  2: [],
-  3: []
-};
+/* MISIÓN 3 CORREGIDA */
+let energia = 10;
+let planSeleccionado = {1:[],2:[],3:[]};
 
 function planAction(el, caso, costo, valor){
   if(el.classList.contains('selected')) return;
-
   if(energia - costo < 0){
     sound('bad');
-    alert("No tienes suficiente energía comunitaria. Debes priorizar mejor.");
+    alert("No tienes suficiente energía comunitaria. Reinicia y prioriza mejor.");
     return;
   }
-
   energia -= costo;
   document.getElementById("energia").innerText = energia;
   el.classList.add('selected');
@@ -735,14 +841,10 @@ function planAction(el, caso, costo, valor){
 }
 
 function resetPlan(){
-  energia = 6;
+  energia = 10;
   planSeleccionado = {1:[],2:[],3:[]};
   document.getElementById("energia").innerText = energia;
-
-  document.querySelectorAll("#m3 .actions span").forEach(s=>{
-    s.classList.remove("selected");
-  });
-
+  document.querySelectorAll("#m3 .actions span").forEach(s=>s.classList.remove("selected"));
   document.getElementById("msg3").innerHTML = "";
 }
 
@@ -750,52 +852,68 @@ function finishM3(){
   const caso1 = planSeleccionado[1].includes("acompañamiento") && planSeleccionado[1].includes("docente");
   const caso2 = planSeleccionado[2].includes("dialogo") && planSeleccionado[2].includes("canal");
   const caso3 = planSeleccionado[3].includes("comunidad") && planSeleccionado[3].includes("recorrido");
-
   const errores =
     planSeleccionado[1].includes("castigo") ||
     planSeleccionado[2].includes("culpa") ||
     planSeleccionado[3].includes("cerrar");
 
   if(caso1 && caso2 && caso3 && !errores){
-    document.getElementById('msg3').innerHTML =
-    "✅ Plan aprobado: lograste equilibrar acompañamiento, comunicación y participación comunitaria.";
-    done(3);
-    unlock(4);
-    updateProgress();
+    document.getElementById('msg3').innerHTML="✅ Plan aprobado. Pista obtenida: I.";
+    completeMission(3,'I');
     sound('ok');
     setTimeout(()=>show('hub'),1100);
   }else{
     sound('bad');
-    document.getElementById('msg3').innerHTML =
-    "❌ El plan aún no es suficiente. Debe incluir apoyo familiar-docente, comunicación y vínculo con la comunidad.";
+    document.getElementById('msg3').innerHTML="❌ Revisa el plan: evita castigo, culpa y cerrar la escuela. Debes unir familia, docente, diálogo, canal, jornada y recorrido.";
   }
 }
 
-/* misión 4 - Laboratorio de transformación */
-let selectedTool = null;
+/* MISIÓN 4 NUEVA */
+let recipe = [];
+const expectedRecipe = ['Escucha','Confianza','Participación','Acuerdos','Seguimiento'];
 
-let lugares = {
-  pl1: {
-    necesarios:["comunidad","ambiente"],
-    usados:[]
-  },
-  pl2: {
-    necesarios:["dialogo","comunidad"],
-    usados:[]
-  },
-  pl3: {
-    necesarios:["familia","escuela"],
-    usados:[]
-  },
-  pl4: {
-    necesarios:["escuela","cultura"],
-    usados:[]
+function addIngredient(el, name){
+  if(el.classList.contains('selected')) return;
+  recipe.push(name);
+  el.classList.add('selected');
+  const item = document.createElement('div');
+  item.className = 'chip selected';
+  item.textContent = recipe.length + '. ' + el.textContent;
+  document.getElementById('recipeOrder').appendChild(item);
+  sound('ok');
+}
+
+function resetRecipe(){
+  recipe=[];
+  document.getElementById('recipeOrder').innerHTML='';
+  document.querySelectorAll('#m4 .recipe .chip').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('msg4').innerHTML='';
+}
+
+function finishM4(){
+  const ok = expectedRecipe.every((v,i)=>recipe[i]===v) && recipe.length===expectedRecipe.length;
+  if(ok){
+    document.getElementById('msg4').innerHTML="✅ Sancocho listo: la alianza quedó bien preparada. Pista obtenida: O.";
+    completeMission(4,'O');
+    sound('ok');
+    setTimeout(()=>show('hub'),1100);
+  }else{
+    sound('bad');
+    document.getElementById('msg4').innerHTML="❌ El orden no está completo. Pista: primero se escucha, luego se construye confianza, después se participa, se acuerda y se hace seguimiento.";
   }
+}
+
+/* MISIÓN 5 */
+let selectedTool = null;
+let lugares = {
+  pl1:{necesarios:["comunidad","ambiente"],usados:[]},
+  pl2:{necesarios:["dialogo","comunidad"],usados:[]},
+  pl3:{necesarios:["familia","escuela"],usados:[]},
+  pl4:{necesarios:["escuela","cultura"],usados:[]}
 };
 
 function selectTool(tool){
   selectedTool = tool;
-
   const nombres = {
     dialogo:"💬 Diálogo",
     familia:"👨‍👩‍👧 Familia",
@@ -804,31 +922,22 @@ function selectTool(tool){
     cultura:"🎭 Cultura",
     ambiente:"🌳 Cuidado ambiental"
   };
-
   document.getElementById("toolSelected").innerText = nombres[tool];
+  document.querySelectorAll('#m5 .chip').forEach(c=>c.classList.remove('selected'));
+  [...document.querySelectorAll('#m5 .chip')].find(c=>c.textContent.includes(nombres[tool].split(' ')[1]))?.classList.add('selected');
   sound('start');
 }
 
 function applyTool(placeId){
-  if(!selectedTool){
-    alert("Primero selecciona una herramienta.");
-    return;
-  }
-
+  if(!selectedTool){alert("Primero selecciona una herramienta.");return;}
   const lugar = lugares[placeId];
   const elemento = document.getElementById(placeId);
-
-  if(lugar.usados.includes(selectedTool)){
-    alert("Ya usaste esa herramienta en este lugar.");
-    return;
-  }
+  if(lugar.usados.includes(selectedTool)){alert("Ya usaste esa herramienta en este lugar.");return;}
 
   if(lugar.necesarios.includes(selectedTool)){
     lugar.usados.push(selectedTool);
     sound('ok');
-
     elemento.innerHTML += "<br>✅ " + document.getElementById("toolSelected").innerText;
-
     if(lugar.usados.length === 2){
       elemento.classList.add("fixed");
       elemento.innerHTML += "<br><strong>Transformado</strong>";
@@ -839,47 +948,54 @@ function applyTool(placeId){
   }
 }
 
-function finishM4(){
+function finishM5(){
   const completos = Object.values(lugares).every(lugar => lugar.usados.length === 2);
-
   if(completos){
-    document.getElementById('msg4').innerHTML =
-    "✅ Barrio transformado: lograste conectar escuela, familia, cultura, ambiente y comunidad.";
-    done(4);
-    unlock(5);
-    updateProgress();
+    document.getElementById('msg5').innerHTML="✅ Barrio transformado. Pista obtenida: N.";
+    completeMission(5,'N');
+    unlock(6);
     sound('ok');
     setTimeout(()=>show('hub'),1100);
   }else{
     sound('bad');
-    document.getElementById('msg4').innerHTML =
-    "❌ Todavía hay espacios sin transformar. Cada lugar necesita dos herramientas correctas.";
+    document.getElementById('msg5').innerHTML="❌ Todavía hay espacios sin transformar. Cada lugar necesita dos herramientas correctas.";
   }
 }
 
-/* misión 5 */
+/* PUERTA FINAL */
+function openDoor(){
+  const code = document.getElementById('doorCode').value.trim().toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  if(code === 'UNION'){
+    document.getElementById('msg6').innerHTML="✅ Puerta abierta. Ahora crea la placa final.";
+    completeMission(6);
+    sound('ok');
+    setTimeout(()=>show('placa'),900);
+  }else{
+    sound('bad');
+    document.getElementById('msg6').innerHTML="❌ Código incorrecto. Une las pistas: U + N + I + O + N.";
+  }
+}
+
 function crearPlaca(){
   const text=document.getElementById('placaTexto').value.trim();
   if(text.length<12){
     sound('bad');
-    document.getElementById('msg5').innerHTML="❌ La placa debe tener una frase más completa.";
+    document.getElementById('msgPlaca').innerHTML="❌ La placa debe tener una frase más completa.";
     return;
   }
-  document.getElementById('placa').innerHTML=text;
+  document.getElementById('placaFinal').innerHTML=text;
   plaqueReady=true;
   sound('ok');
 }
 
 function final(){
   if(plaqueReady){
-    done(5); updateProgress();
+    document.getElementById('bar').style.width = "100%";
     show('final');
   }else{
-    document.getElementById('msg5').innerHTML="❌ Primero crea la placa.";
+    document.getElementById('msgPlaca').innerHTML="❌ Primero crea la placa.";
   }
 }
 </script>
-
 </body>
 </html>
-```
